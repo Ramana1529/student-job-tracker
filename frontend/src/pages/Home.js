@@ -9,6 +9,7 @@ const Home = () => {
 
   const fetchJobs = async () => {
     try {
+      console.log("reading url: ",API_BASE_URL)
       const res = await axios.get(`${API_BASE_URL}/api/jobs`);
       setJobs(res.data);
     } catch (error) {
