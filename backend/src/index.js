@@ -4,10 +4,7 @@ const connectDB= require("./config/database")
 const jobroutes=require("./routes/routes")
 const app = express();
 app.use(express.json());
-app.use(cors({ 
-    origin: " http://localhost:3001",
-    credentials:true
-  }));
+app.use(cors());
 
 app.use("/api", jobroutes);
 
