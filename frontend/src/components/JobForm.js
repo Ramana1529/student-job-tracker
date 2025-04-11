@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 const JobForm = ({refreshJobs}) =>{
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const [form, setForm] = useState({
         company: "",
         role: "",
@@ -15,7 +16,7 @@ const JobForm = ({refreshJobs}) =>{
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-           await axios.post("http://localhost:3000/api/jobs",form)
+           await axios.post(`${API_BASE_URL}/api/jobs`,form)
             refreshJobs();
             setForm({ company: "", role: "", status: "Applied", date: "", link: "" });
         }

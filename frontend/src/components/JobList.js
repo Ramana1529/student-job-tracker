@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Styles.css";  
 const JobList = ({ jobs, refreshJobs }) => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [editingJob, setEditingJob] = useState(null);
   const [newStatus, setNewStatus] = useState("");
   const [filterStatus, setFilterStatus] = useState("");
@@ -19,7 +20,7 @@ const JobList = ({ jobs, refreshJobs }) => {
 
   const handleUpdateStatus = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/jobs/${editingJob}`, { status: newStatus });
+      await axios.put(`${API_BASE_URL}/api/jobs/${editingJob}`, { status: newStatus });
       setEditingJob(null);
       refreshJobs();
     } catch (error) {
@@ -29,7 +30,7 @@ const JobList = ({ jobs, refreshJobs }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/jobs/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/jobs/${id}`);
       refreshJobs();
     } catch (error) {
       console.error("Error deleting job:", error);

@@ -4,11 +4,12 @@ import JobForm from "../components/JobForm";
 import JobList from "../components/JobList";
 
 const Home = () => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [jobs, setJobs] = useState([]);
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/jobs");
+      const res = await axios.get(`${API_BASE_URL}/api/jobs`);
       setJobs(res.data);
     } catch (error) {
       console.error("Error fetching jobs:", error);
