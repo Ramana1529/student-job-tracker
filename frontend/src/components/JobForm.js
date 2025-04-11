@@ -16,7 +16,7 @@ const JobForm = ({refreshJobs}) =>{
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-           await axios.post(`${API_BASE_URL}/api/jobs`,form)
+            await axios.post(`${API_BASE_URL}/api/jobs`,form);
             refreshJobs();
             setForm({ company: "", role: "", status: "Applied", date: "", link: "" });
         }
